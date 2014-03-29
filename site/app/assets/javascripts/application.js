@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function init(){
+    console.log("put something here")
+}
+window.addEventListener ?
+window.addEventListener("load",init,false) :
+window.attachEvent && window.attachEvent("onload",init);
