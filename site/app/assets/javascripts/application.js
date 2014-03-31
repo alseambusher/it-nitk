@@ -15,9 +15,23 @@
 //= require turbolinks
 //= require_tree .
 
-function init(){
-    console.log("put something here")
+function init() {
+    console.log("put something here");
+    var alert_data = [
+        ["30 Mar", "something new", true],
+        ["31 Mar", "something something something", false],
+        ["31 Mar", "something something something", true],
+        ["31 Mar", "something something something", false],
+        ["31 Mar", "something something something", false],
+        ["31 Mar", "something something something", true]
+    ];
+//    alerts(alert_data,0);
+
+}
+
+function alerts(data, index) {
+    setTimeout(function(){alerts(data,index+5)},5000);
 }
 window.addEventListener ?
-window.addEventListener("load",init,false) :
-window.attachEvent && window.attachEvent("onload",init);
+    window.addEventListener("load", init, false) :
+    window.attachEvent && window.attachEvent("onload", init);
