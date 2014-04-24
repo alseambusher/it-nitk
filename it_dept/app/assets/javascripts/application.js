@@ -14,6 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-window.document.onload = function(){
-	alert('dvib');
+
+function init() {
+    console.log("put something here");
+    $('#alerts a').click( function(){
+        $("#modal").modal("show");
+        $(".modal-title").html($(this).attr("data-title"));
+        $(".modal-body").html($(this).attr("data-description"));
+    });
+
 }
+window.addEventListener ?
+    window.addEventListener("load", init, false) :
+    window.attachEvent && window.attachEvent("onload", init);
