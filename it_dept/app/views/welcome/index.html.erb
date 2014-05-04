@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-8" style="width: 70%">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 800px;"
+  <div class="col-md-8 carousel-container" style="width: 70%">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
          xmlns="http://www.w3.org/1999/html">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -12,23 +12,25 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-          <%= image_tag("1.jpg", :alt => "") %>
-          <div class="carousel-caption">
-            cscasdcsd
-          </div>
+        <%= image_tag(@data["slide_show_active"].item.url()) %>
+            <% if @data["slide_show_active"].title!= "" && @data["slide_show_active"].description!= ""%>
+              <div class="carousel-caption">
+                <h4><%= @data["slide_show_active"].title %></h4>
+                <p><%= @data["slide_show_active"].description %></p>
+              </div>
+            <% end %>
         </div>
-        <div class="item">
-          <%= image_tag("2.jpg", :alt => "") %>
-          <div class="carousel-caption">
-            cscasdcsd
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag("3.jpg", :alt => "") %>
-          <div class="carousel-caption">
-            cscasdcsd
-          </div>
-        </div>
+        <% @data["slide_show"].each do |res| %>
+            <div class="item">
+              <%= image_tag(res.item.url()) %>
+              <% if res.description!="" && res.title!="" %>
+                  <div class="carousel-caption">
+                        <h4><%= res.title %></h4>
+                        <p><%= res.description %></p>
+                  </div>
+              <% end %>
+            </div>
+        <% end %>
       </div>
 
       <!-- Controls -->
@@ -42,7 +44,7 @@
   </div>
   <div class="col-md-8" style="width: 30%">
     <div class="list-group" id="alerts" style="display: inline-block">
-      <% @alerts.each do |result| %>
+      <% @data["alerts"].each do |result| %>
           <a class="list-group-item" data-title="<%= result.title %>" data-description=" <%= result.description %>">
             <span><strong>
               <%= result.date.day %>
@@ -54,23 +56,17 @@
       <a class="list-group-item active">
         <span><strong>31 Mar</strong></span> something new
       </a>
-      <a class="list-group-item"><span><strong>22 Mar</strong></span> something something something</a>
-      <a class="list-group-item active"><span><strong>31 Mar</strong></span> something something something</a>
-      <a class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
+      <a class="list-group-item"><span><strong>22 Mar</strong></span> Avinash N Bukkittu, final year B.Tech(IT) student selected as Young Ambassador for German Academic Exchange Service (DAAD) for the year 2013 - 2014 </a>
     </div>
   </div>
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3" style="width:25%">
     <h2>Events</h2>
-
     <div class="list-group" style="display: inline-block">
       <a href="#" class="list-group-item active">
-        <span><strong>31 Mar</strong></span> something new
+        <span><strong>31 Mar</strong></span>  Avinash N Bukkittu, final year B.Tech(IT) student selected as Young Ambassador for German Academic Exchange Service (DAAD) for the year 2013 - 2014
       </a>
       <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
       <a href="#" class="list-group-item active"><span><strong>31 Mar</strong></span> something something something</a>
@@ -80,5 +76,7 @@
       <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
     </div>
   </div>
+  <div class="col-md-8" style="width: 65%">
+    <%= @data["about"].description.html_safe %>
+  </div>
 </div>
-<!--<%= asset_path('glyphicons-halflings-regular.woff') %>-->

@@ -21,7 +21,10 @@ a, a:link {
     background: #222222;
     color: #ffffff;
 }
-
+.carousel-container{
+    height:270px;
+    overflow: hidden;
+}
 /* overrides */
 /*a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {*/
     /*background-color: #222222;*/

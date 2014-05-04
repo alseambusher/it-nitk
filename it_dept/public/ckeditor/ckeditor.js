@@ -4,7 +4,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 $(document).ready(function() {
-	possible_id = ["event_description","page_description","alert_description"] 
+	possible_id = ["page_description","alert_description"] 
 	i=0
 	while(i< possible_id.length) 
 	{

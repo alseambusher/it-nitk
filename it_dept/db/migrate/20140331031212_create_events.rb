@@ -4,7 +4,9 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.string :title
       t.text :description
-      t.text :thumbnail
+      t.integer :upload_id
+      t.integer :page_id
+      # t.text :thumbnail
 
       t.timestamps
     end

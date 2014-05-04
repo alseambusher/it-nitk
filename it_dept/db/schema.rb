@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424222047) do
+ActiveRecord::Schema.define(version: 20140504082101) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 20140424222047) do
     t.date     "date"
     t.string   "title"
     t.text     "description"
-    t.text     "thumbnail"
+    t.integer  "upload_id"
+    t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +82,17 @@ ActiveRecord::Schema.define(version: 20140424222047) do
 
   create_table "people_types", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "slide_shows", force: true do |t|
+    t.string   "item_file_name"
+    t.string   "item_content_type"
+    t.integer  "item_file_size"
+    t.datetime "item_updated_at"
+    t.string   "title"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
