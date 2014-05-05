@@ -4,10 +4,9 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.string :title
       t.text :description
-      t.integer :upload_id
+      #t.integer :upload_id
       t.integer :page_id
-      # t.text :thumbnail
-
+      t.boolean :important, :default => false
       t.timestamps
     end
   end

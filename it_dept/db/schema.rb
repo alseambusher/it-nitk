@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140504082101) do
     t.date     "date"
     t.string   "title"
     t.text     "description"
+    t.boolean  "important",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,8 +59,8 @@ ActiveRecord::Schema.define(version: 20140504082101) do
     t.date     "date"
     t.string   "title"
     t.text     "description"
-    t.integer  "upload_id"
     t.integer  "page_id"
+    t.boolean  "important",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

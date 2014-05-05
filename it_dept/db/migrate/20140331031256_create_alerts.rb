@@ -4,7 +4,7 @@ class CreateAlerts < ActiveRecord::Migration
       t.date :date
       t.string :title
       t.text :description
-
+      t.boolean :important, :default => false
       t.timestamps
     end
   end

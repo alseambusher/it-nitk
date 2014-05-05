@@ -33,6 +33,9 @@ a, a:link {
 .list-group{
     display: inline-block;
 }
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus{
+    border: 1px solid #DDD;
+}
 .carousel-caption{
     background: rgba(107, 100, 103, 0.63);
 }

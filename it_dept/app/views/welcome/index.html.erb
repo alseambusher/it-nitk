@@ -1,3 +1,11 @@
+<script>
+  // this is a quick hack. remove this later
+    $('#alerts a').click( function(){
+        $("#modal").modal("show");
+        $(".modal-title").html($(this).attr("data-title"));
+        $(".modal-body").html($(this).attr("data-description"));
+    });
+</script>
 <div class="row">
   <div class="col-md-8 carousel-container" style="width: 70%">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
@@ -12,21 +20,23 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-        <%= image_tag(@data["slide_show_active"].item.url()) %>
-            <% if @data["slide_show_active"].title!= "" && @data["slide_show_active"].description!= ""%>
+          <%= image_tag(@data["slide_show_active"].item.url()) %>
+          <% if @data["slide_show_active"].title!= "" && @data["slide_show_active"].description!= "" %>
               <div class="carousel-caption">
                 <h4><%= @data["slide_show_active"].title %></h4>
+
                 <p><%= @data["slide_show_active"].description %></p>
               </div>
-            <% end %>
+          <% end %>
         </div>
         <% @data["slide_show"].each do |res| %>
             <div class="item">
               <%= image_tag(res.item.url()) %>
               <% if res.description!="" && res.title!="" %>
                   <div class="carousel-caption">
-                        <h4><%= res.title %></h4>
-                        <p><%= res.description %></p>
+                    <h4><%= res.title %></h4>
+
+                    <p><%= res.description %></p>
                   </div>
               <% end %>
             </div>
@@ -45,7 +55,7 @@
   <div class="col-md-8" style="width: 30%">
     <div class="list-group" id="alerts" style="display: inline-block">
       <% @data["alerts"].each do |result| %>
-          <a class="list-group-item" data-title="<%= result.title %>" data-description=" <%= result.description %>">
+          <a class=<% if result.important %> "list-group-item active" <% else %> "list-group-item" <% end %> data-title="<%= result.title %>" data-description=" <%= result.description %>">
             <span><strong>
               <%= result.date.day %>
               <%= result.date.strftime("%B") %>
@@ -53,9 +63,6 @@
             <%= result.title %>
           </a>
       <% end %>
-      <a class="list-group-item active">
-        <span><strong>31 Mar</strong></span> something new
-      </a>
     </div>
   </div>
 </div>
@@ -65,15 +72,24 @@
     <h2>Events</h2>
 
     <div class="list-group" style="display: inline-block">
-      <a href="#" class="list-group-item active">
-        <span><strong>31 Mar</strong></span> something new
-      </a>
-      <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a href="#" class="list-group-item active"><span><strong>31 Mar</strong></span> something something something</a>
-      <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
-      <a href="#" class="list-group-item"><span><strong>31 Mar</strong></span> something something something</a>
+      <% @data["events"].each do |result| %>
+          <a
+            class=<% if result.important %>
+                    "list-group-item active"
+                    <% else %>
+                    "list-group-item"
+                    <% end %>
+            <% if result.page_id != nil %>
+            href="<%= url_for(:controller => "/page_router", :action => "page", :id => result.page_id) %>"
+            <% end %>
+          >
+            <span><strong>
+              <%= result.date.day %>
+              <%= result.date.strftime("%B") %>
+            </strong></span>
+            <%= result.title %>
+          </a>
+      <% end %>
     </div>
   </div>
   <div class="col-md-8" style="width: 65%">

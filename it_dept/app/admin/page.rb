@@ -18,7 +18,8 @@ ActiveAdmin.register Page do
     column :id
     column :title
     #column :description
-    column "url" do |f| link_to (url_for :controller => "/page_router", :action => "page", :id => f.id, :only_path =>false), (url_for :controller => "/page_router", :action => "page", :id => f.id) end
+    column "url" do |f| link_to (url_for :controller => "/page_router", :action => "page", :id => f.id, :only_path => false), (url_for :controller => "/page_router", :action => "page", :id => f.id) end
+    column "Updated at", :sortable => "item_updated_at" do |f| Time.at(f.updated_at()) end
     default_actions
   end
 
