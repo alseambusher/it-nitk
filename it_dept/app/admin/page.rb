@@ -15,8 +15,10 @@ ActiveAdmin.register Page do
   # end
 
   index do
+    column :id
     column :title
-    column :description
+    #column :description
+    column "url" do |f| link_to (url_for :controller => "/page_router", :action => "page", :id => f.id, :only_path =>false), (url_for :controller => "/page_router", :action => "page", :id => f.id) end
     default_actions
   end
 
@@ -27,7 +29,4 @@ ActiveAdmin.register Page do
     end
     f.actions
   end
-
-
-  
 end
