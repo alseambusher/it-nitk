@@ -25,6 +25,18 @@ a, a:link {
     height:270px;
     overflow: hidden;
 }
+.people-box{
+    border: 1px solid #DDD;
+}
+.people-box .description{
+    vertical-align: baseline;
+    display: inline-block;
+}
+.people-box img{
+    max-width: 144px;
+    padding: 6px;
+    height: auto;
+}
 /* overrides */
 /*a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {*/
     /*background-color: #222222;*/
@@ -44,4 +56,12 @@ hr{
 }
 .list-group a{
     cursor: pointer;
+}
+.navbar-default .navbar-nav > li > a{
+    margin-top: 3px;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    margin-top: 10px;
+    padding-top:5px;
+    padding-bottom:5px
 }

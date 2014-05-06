@@ -1,0 +1,12 @@
+<% @people.each do |person| %>
+    <a href="<%= url_for(controller: "page_router", action: "page", id: person.page_id) %>">
+      <div class="people-box">
+        <%= image_tag(person.photo.url()) %>
+        <div class="description">
+          <%= person.name %>
+          <br>
+          <%= person.people_type.name %>
+        </div>
+      </div>
+    </a>
+<% end %>

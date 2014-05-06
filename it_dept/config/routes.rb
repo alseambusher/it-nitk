@@ -5,6 +5,7 @@ ItDept::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   get 'page/:id', to: 'page_router#page'
+  get 'people', to: 'page_router#people'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

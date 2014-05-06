@@ -10,4 +10,7 @@ class PageRouterController < ApplicationController
       end
     end
   end
+  def people
+    @people = People.order(:name)
+  end
 end
