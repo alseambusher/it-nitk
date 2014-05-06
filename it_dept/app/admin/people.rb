@@ -1,17 +1,12 @@
 ActiveAdmin.register People do
-
-  
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  permit_params :name , :position , :page_id , :people_type_id
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
-  
+  permit_params :name ,:photo, :page_id , :people_type_id
+  form do |f|
+    f.inputs do
+     f.input :name
+      f.input :photo
+     f.input :page_id, as: :select, collection: Page.all
+      f.input :people_type_id, as: :select, collection: PeopleType.all
+    end
+    f.actions
+  end
 end

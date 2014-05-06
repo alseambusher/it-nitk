@@ -58,9 +58,8 @@ ActiveRecord::Schema.define(version: 20140504082101) do
   create_table "events", force: true do |t|
     t.date     "date"
     t.string   "title"
-    t.text     "description"
     t.integer  "page_id"
-    t.boolean  "important",   default: false
+    t.boolean  "important",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,7 +73,10 @@ ActiveRecord::Schema.define(version: 20140504082101) do
 
   create_table "people", force: true do |t|
     t.string   "name"
-    t.string   "position"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
